@@ -1,0 +1,5 @@
+region = "ap-tokyo-1" # デフォルトは、東京（ap-tokyo-1）ですが、変更する場合は適宜修正してください
+compartment_ocid = "" # ハンズオン対象のCompartment OCIDを指定します
+subnet_ocid = "" # 作成済みのVCN内に含まれているPublic Subnetを指定します
+resource_prefix = "" # Compute Instanceなどにつける名前が重複しないように適当なPrefixを設定します
+ssh_authorized_keys_path = "" # インスタンスにSSH接続するため、公開鍵を設定します
