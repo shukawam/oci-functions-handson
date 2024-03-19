@@ -8,7 +8,7 @@ import oci
 from fdk import response
 
 rp = os.getenv("OCI_RESOURCE_PRINCIPAL_VERSION", "")
-if rp == 2.2:
+if rp == "2.2":
     signer = oci.auth.signers.get_resource_principals_signer()
 else:
     print("use instance principal")
@@ -18,7 +18,7 @@ compute_client = oci.core.ComputeClient(config={}, signer=signer)
 def handler(ctx, data: io.BytesIO = None):
     try:
         body = json.loads(data.getvalue())
-        instance_id = body.get("instanceId")
+        instance_id = body.get("instance_id")
     except (Exception, ValueError) as ex:
         logging.getLogger().info('error parsing json payload: ' + str(ex))
     logging.getLogger().info("Inside start compute function")
@@ -41,7 +41,6 @@ def launch_instance(instance_id: str) -> bool:
     Returns:
         bool: status of launch instance request
     """
-    instance_id = "ocid1.instance.oc1.iad.anuwcljtssl65iqcxcpl4wnymn7455qpudr2h4g4isrtjpkcyf5lshfjljpq"
     compute_client.instance_action(instance_id, "START")
     while True:
         time.sleep(10)
@@ -52,4 +51,4 @@ def launch_instance(instance_id: str) -> bool:
     
 
 if __name__ == "__main__":
-    launch_instance()
+    launch_instance("dummy")
