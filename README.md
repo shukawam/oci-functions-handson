@@ -227,21 +227,15 @@ fn update context oracle.compartment-id $COMPARTMENT_ID
 Current context updated oracle.compartment-id with <ハンズオンで使用するコンパートメントID>
 ```
 
-ハンズオンで使用するコンテナ・レジストリ（OCIR）のベースパスをコンテキストに設定するために、Object Storage の namespace を取得します。
+ハンズオンで使用するコンテナ・レジストリ（OCIR）のベースパスをコンテキストに設定するために、テナンシーの namespace を取得します。OCI Console 右上の人型アイコンからテナンシをクリックします。
 
-```sh
-oci --auth instance_principal os ns get
-```
+![handson-step-08](images/handson-step-08.png)
 
-実行結果
+テナンシの詳細画面から、オブジェクト・ストレージ・ネームスペースをコピーします。
 
-```sh
-{
-  "data": "<namespace>"
-}
-```
+![handson-step-09](images/handson-step-09.png)
 
-便宜上、実行結果を変数に格納しておきます。
+後述の手順のために、変数に格納しておきます。
 
 ```sh
 NAMESPACE="<namespace>"
@@ -360,12 +354,12 @@ OCIR にログインするための資格情報を取得します。OCI Console 
 
 ![handson-step-04](images/handson-step-04.png)
 
-ユーザーの詳細画面に表示されているユーザー名（以下、図中の `oracleidentitycloudservice/shuhei.kawamura@oracle.com`）を以下のように変数に設定します。
+ユーザーの詳細画面に表示されているユーザー名（以下、図中では `oracleidentitycloudservice/shuhei.kawamura@oracle.com`）を以下のように変数に設定します。
 
 ![handson-step-05](images/handson-step-05.png)
 
 ```sh
-DOCKER_USERNAME=${NAMESPACE}/<コピーしたユーザー名>
+DOCKER_USERNAME="${NAMESPACE}/<コピーしたユーザー名>"
 ```
 
 ユーザーの詳細画面に表示されている認証トークンをクリックします。
