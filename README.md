@@ -54,11 +54,12 @@ git clone https://github.com/shukawam/oci-functions-handson.git
 クローンしたリポジトリは以下のような構成となっています。
 
 ```sh
-tree -d
-.
-├── images [ README 表示用の画像コンテンツ ]
-├── start-compute [ Compute Instance を起動するための OCI Functions の実装 ]
-└── terraform [ 管理、起動対象の Compute Instance を作成するための、Terraform コード ]
+ls -l
+total 32
+-rw-rw-r-- 1 shukawam shukawam 18762 Mar 19 15:02 README.md
+drwxrwxr-x 2 shukawam shukawam  4096 Mar 19 00:27 images [ README 表示用の画像コンテンツ ]
+drwxr-xr-x 2 shukawam shukawam  4096 Mar 18 16:55 start-compute [ Compute Instance を起動するための OCI Functions の実装 ]
+drwxrwxr-x 3 shukawam shukawam  4096 Mar 21 17:50 terraform [ 管理、起動対象の Compute Instance を作成するための、Terraform コード ]
 ```
 
 ### OCI Functions 実行用と起動対象の Compute Instance の作成
@@ -81,7 +82,43 @@ resource_prefix = "" # Compute Instanceなどにつける名前が重複しな�
 ssh_authorized_keys_path = "" # インスタンスにSSH接続するため、公開鍵を設定します
 ```
 
-Terraform にて、実行計画を確認します。
+Terraform の初期化を行います。
+
+```sh
+terraform init
+```
+
+以下のようなログが出力されることを確認します。
+
+```sh
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding oracle/oci versions matching "< 6.0.0"...
+- Installing oracle/oci v5.34.0...
+- Installed oracle/oci v5.34.0 (signed by a HashiCorp partner, key ID 1533A49284137CEB)
+
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://www.terraform.io/docs/cli/plugins/signing.html
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+次に、Terraform の実行計画を確認します。
 
 ```sh
 terraform plan -var-file variables.tfvars
