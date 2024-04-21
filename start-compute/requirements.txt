@@ -12,7 +12,7 @@ iso8601==0.1.12
 oci==2.124.1
 packaging==24.0
 pbr==6.0.0
-pluggy==1.4.0
+pluggy==1.5.0
 pycparser==2.21
 pyOpenSSL==24.1.0
 pytest==8.1.1
