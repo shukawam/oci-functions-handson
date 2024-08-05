@@ -3,7 +3,7 @@ cffi==1.16.0
 circuitbreaker==1.4.0
 contextvars==2.4
 cryptography==42.0.5
-Cython==3.0.9
+Cython==3.0.11
 fdk==0.1.70
 httptools==0.6.1
 immutables==0.20
