@@ -9,7 +9,7 @@ httptools==0.6.1
 immutables==0.20
 iniconfig==2.0.0
 iso8601==0.1.12
-oci==2.124.1
+oci==2.137.0
 packaging==24.0
 pbr==6.0.0
 pluggy==1.4.0
